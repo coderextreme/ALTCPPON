@@ -2,7 +2,7 @@
 
 let fs = require('fs');
 
-let namespace = "glTF";
+let namespace = "X3D";
 
 let APIJSONLD = {
 convertArray : function(classes, parentkey, array, gparentkey, ggparentkey) {
