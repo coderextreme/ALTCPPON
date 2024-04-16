@@ -459,8 +459,8 @@ class extensions {
 	get KHR_materials_unlit() {}
 	set packet(arg1) {}
 	get packet() {}
-	set At_context(arg1) {}
-	get At_context() {}
+	set context(arg1) {}
+	get context() {}
 	addPackets(arg1) {}
 	removePackets(arg1) {}
 	set KHR_xmp_json_ld(arg1) {}
@@ -834,32 +834,32 @@ class packet {
 	constructor() {}
 	get JSON() {}
 	set JSON(arg1) {}
-	set dcColon_date(arg1) {}
-	get dcColon_date() {}
-	set dcColon_title(arg1) {}
-	get dcColon_title() {}
-	set xmpColon_CreatorTool(arg1) {}
-	get xmpColon_CreatorTool() {}
-	set At_context(arg1) {}
-	get At_context() {}
-	set At_id(arg1) {}
-	get At_id() {}
-	set dcColon_contributor(arg1) {}
-	get dcColon_contributor() {}
-	set dcColon_coverage(arg1) {}
-	get dcColon_coverage() {}
-	set dcColon_creator(arg1) {}
-	get dcColon_creator() {}
-	set dcColon_description(arg1) {}
-	get dcColon_description() {}
-	set dcColon_format(arg1) {}
-	get dcColon_format() {}
-	set dcColon_language(arg1) {}
-	get dcColon_language() {}
-	set dcColon_publisher(arg1) {}
-	get dcColon_publisher() {}
+	set dc_colon_date(arg1) {}
+	get dc_colon_date() {}
+	set dc_colon_title(arg1) {}
+	get dc_colon_title() {}
+	set xmp_colon_CreatorTool(arg1) {}
+	get xmp_colon_CreatorTool() {}
+	set context(arg1) {}
+	get context() {}
+	set id(arg1) {}
+	get id() {}
+	set dc_colon_contributor(arg1) {}
+	get dc_colon_contributor() {}
+	set dc_colon_coverage(arg1) {}
+	get dc_colon_coverage() {}
+	set dc_colon_creator(arg1) {}
+	get dc_colon_creator() {}
+	set dc_colon_description(arg1) {}
+	get dc_colon_description() {}
+	set dc_colon_format(arg1) {}
+	get dc_colon_format() {}
+	set dc_colon_language(arg1) {}
+	get dc_colon_language() {}
+	set dc_colon_publisher(arg1) {}
+	get dc_colon_publisher() {}
 }
-class At_context {
+class context {
 	constructor() {}
 	get JSON() {}
 	set JSON(arg1) {}
@@ -868,64 +868,64 @@ class At_context {
 	set rdf(arg1) {}
 	get rdf() {}
 }
-class dcColon_contributor {
+class dc_colon_contributor {
 	constructor() {}
 	get JSON() {}
 	set JSON(arg1) {}
-	addAt_set(arg1) {}
-	removeAt_set(arg1) {}
+	addSet(arg1) {}
+	removeSet(arg1) {}
 }
-class dcColon_creator {
+class dc_colon_creator {
 	constructor() {}
 	get JSON() {}
 	set JSON(arg1) {}
-	addAt_list(arg1) {}
-	removeAt_list(arg1) {}
+	addList(arg1) {}
+	removeList(arg1) {}
 }
-class dcColon_date {
+class dc_colon_date {
 	constructor() {}
 	get JSON() {}
 	set JSON(arg1) {}
-	addAt_list(arg1) {}
-	removeAt_list(arg1) {}
+	addList(arg1) {}
+	removeList(arg1) {}
 }
-class dcColon_description {
+class dc_colon_description {
 	constructor() {}
 	get JSON() {}
 	set JSON(arg1) {}
-	set At_type(arg1) {}
-	get At_type() {}
-	set At_language(arg1) {}
-	get At_language() {}
-	set At_value(arg1) {}
-	get At_value() {}
-	set rdfColon__1(arg1) {}
-	get rdfColon__1() {}
+	set type(arg1) {}
+	get type() {}
+	set language(arg1) {}
+	get language() {}
+	set value(arg1) {}
+	get value() {}
+	set rdf_colon__1(arg1) {}
+	get rdf_colon__1() {}
 }
-class dcColon_language {
+class dc_colon_language {
 	constructor() {}
 	get JSON() {}
 	set JSON(arg1) {}
-	addAt_set(arg1) {}
-	removeAt_set(arg1) {}
+	addSet(arg1) {}
+	removeSet(arg1) {}
 }
-class dcColon_publisher {
+class dc_colon_publisher {
 	constructor() {}
 	get JSON() {}
 	set JSON(arg1) {}
-	addAt_set(arg1) {}
-	removeAt_set(arg1) {}
+	addSet(arg1) {}
+	removeSet(arg1) {}
 }
-class dcColon_title {
+class dc_colon_title {
 	constructor() {}
 	get JSON() {}
 	set JSON(arg1) {}
-	set At_type(arg1) {}
-	get At_type() {}
-	set At_language(arg1) {}
-	get At_language() {}
-	set At_value(arg1) {}
-	get At_value() {}
-	set rdfColon__1(arg1) {}
-	get rdfColon__1() {}
+	set type(arg1) {}
+	get type() {}
+	set language(arg1) {}
+	get language() {}
+	set value(arg1) {}
+	get value() {}
+	set rdf_colon__1(arg1) {}
+	get rdf_colon__1() {}
 }
