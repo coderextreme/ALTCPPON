@@ -33,6 +33,7 @@ for (let clazz in classes) {
 	classinfo = classinfo.replaceAll(":", "_colon_");
 	classinfo = classinfo.replaceAll("-", "");
 	classinfo = classinfo.replaceAll("#", "");
+	classinfo = classinfo.replaceAll("children", "child");
 	console.log("class", classinfo, "{");
 	for (let method in classes[clazz]) {
 		let methodinfo = classes[clazz][method];

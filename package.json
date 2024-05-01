@@ -1,0 +1,9 @@
+{
+  "name": "ALTCPPON",
+  "version": "0.1.0",
+  "main": "none.js",
+  "dependencies": {
+    "node-mkdirp": "*",
+    "@xmldom/xmldom": "*"
+  }
+}

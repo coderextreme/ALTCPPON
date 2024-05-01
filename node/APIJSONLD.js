@@ -18,16 +18,24 @@ convertArray : function(classes, parentkey, array, gparentkey, ggparentkey) {
 		} else if (Array.isArray(array[key])) {
 			// APIJSONLD.convertArray(classes, key, array[key], parentkey, gparentkey);
 			let uckey = parentkey;
+			let member = uckey;
 			if (uckey.indexOf("#") === 0 || uckey.indexOf("-") === 0 || uckey.indexOf("@") === 0 ) {
 				uckey = uckey.slice(1);
+				member = uckey;
+			}
+			if (uckey == 'function') {
+				member = "functions";
+			}
+			if (uckey == 'point') {
+				member = "points";
 			}
 			uckey = uckey[0].toUpperCase() + uckey.slice(1);
-			classes[ggparentkey][parentkey] = "\tadd"+uckey+"(arg1) {}\n\tremove"+uckey+"(arg1) {}";
+			classes[ggparentkey][parentkey] = "\tadd"+uckey+"(arg1) { this."+member+".push(...arg1); return this; }\n\tremove"+uckey+"(arg1) { "+member+".splice("+member+".findIndex(e => arg1.includes(e)), 1); }";
 		} else if (typeof array[key] === 'object') {
 			let remove_s = 1;
 			if (namespace === "X3D") {
 				remove_s = 0;
-			} else {
+			} else if (namespace === "glTF") {
 				if (parentkey === "scene" || parentkey == "asset") {
 					remove_s = 0;
 				}
@@ -75,30 +83,38 @@ convertObject : function(classes, parentkey, object, gparentkey, ggparentkey) {
 	for (key in object) {
 		if (Array.isArray(object[key])) {
 			let uckey = key;
+			let member = uckey;
 			if (uckey.indexOf("#") === 0 || uckey.indexOf("-") === 0 || uckey.indexOf("@") === 0 ) {
 				uckey = uckey.slice(1);
+				member = uckey;
+			}
+			if (uckey == 'function') {
+				member = "functions";
+			}
+			if (uckey == 'point') {
+				member = "points";
 			}
 			uckey = uckey[0].toUpperCase() + uckey.slice(1);
-			classes[clazz][key] = "\tadd"+uckey+"(arg1) {}\n\tremove"+uckey+"(arg1) {}";
+			classes[clazz][key] = "\tadd"+uckey+"(arg1) { this."+member+".push(...arg1); return this; }\n\tremove"+uckey+"(arg1) { "+member+".splice("+member+".findIndex(e => arg1.includes(e)), 1); }";
 			APIJSONLD.convertArray(classes,      key, object[key], parentkey, gparentkey);
 		} else if (typeof object[key] === 'object') {
 			APIJSONLD.convertObject(classes,     key, object[key], parentkey, gparentkey);
 			if (key !== namespace) {
-				classes[clazz][key] = "\tset "+key+"(arg1) {}\n\tget "+key+"() {}";
+				classes[clazz][key] = "\tset "+key+"(arg1) { this."+key+" = arg1; return this; }\n\tget "+key+"() { return "+key+"; }";
 			}
 		} else if (typeof object[key] === 'number') {
-			classes[clazz][key] = "\tset "+key+"(arg1) {}\n\tget "+key+"() {}";
+			classes[clazz][key] = "\tset "+key+"(arg1) { this."+key+" = arg1; return this; }\n\tget "+key+"() { return "+key+";}";
 		} else if (typeof object[key] === 'string' && key !== 'JSON Schema') {
 			let uckey = key;
 			if (uckey === '@class') {
 				uckey = '@cssClass';
 			}
-			classes[clazz][key] = "\tset "+uckey+"(arg1) {}\n\tget "+uckey+"() {}";
+			classes[clazz][key] = "\tset "+uckey+"(arg1) { this."+uckey+" = arg1; return this; }\n\tget "+uckey+"() { return "+uckey+";}";
 		} else if (typeof object[key] === 'boolean') {
-			classes[clazz][key] = "\tset "+key+"(arg1) {}\n\tget "+key+"() {}";
+			classes[clazz][key] = "\tset "+key+"(arg1) { this."+key+" = arg1; return this; }\n\tget "+key+"() { return "+key+";}";
 		} else if (typeof object[key] === 'undefined') {
 		} else if (object[key] === null) {
-			classes[clazz][key] = "set "+key+"() {}";
+			classes[clazz][key] = "set "+key+"() { this."+key+" = null; }";
 		} else {
 			console.error("Unknown type found in object", key, ":", typeof object[key]);
 			console.error(object);
